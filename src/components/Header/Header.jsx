@@ -4,10 +4,10 @@ import { Link, Link as NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <nav>
-      <div className='navbar bg-base-100'>
+      <div className='navbar bg-amber-300'>
         <div className='flex-1'>
           <Link to='/' className='btn btn-ghost normal-case text-xl'>
-            Quizzily
+            <span className="text-red-600">Q</span> uizzily
           </Link>
         </div>
         <div className='flex-none'>
