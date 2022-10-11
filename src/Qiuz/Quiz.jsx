@@ -12,7 +12,7 @@ const Quiz = () => {
             {/* UI for Quiz */}
             <div className="quiz-box mt-5">
                 <div className="img-side">
-                <img className='w-60 mx-auto' src={quizdata.logo} alt={quizdata.name} />
+                <img className='w-60 mx-auto rounded-full shadow-lg' src={quizdata.logo} alt={quizdata.name} />
                 </div>
                 <div className="question">
                 {
