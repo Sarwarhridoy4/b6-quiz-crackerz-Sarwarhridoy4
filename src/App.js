@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import NotFound from './components/404/NotFound';
 import Blogs from './components/Blogs/Blogs';
 import Home from './components/Home/Home';
 import Statistics from './components/Statistics/Statistics';
@@ -37,6 +38,10 @@ function App() {
           element:<Blogs></Blogs>
         }
       ]
+    },
+    {
+      path: '*',
+      element:<NotFound></NotFound>
     }
   ])
   return (
