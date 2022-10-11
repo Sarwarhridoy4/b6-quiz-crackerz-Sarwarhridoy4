@@ -7,7 +7,7 @@ import Item from "../Item/Item";
 const Home = () => {
     
     const topics = useLoaderData().data;
-    console.log(topics);
+    // console.log(topics);
     
   return (
     <div>
