@@ -1,27 +1,26 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React from "react";
+import { useLoaderData } from "react-router-dom";
+import Question from "../components/Question/Question";
 
 const Quiz = () => {
-    const quizdata = useLoaderData().data;
-    console.log(quizdata);
-    return (
-        <div>
-            <div className="header flex items-center justify-center w-full h-10 bg-orange-500">
-                <h2 className='text-blue-600 text-3xl font-semibold'>{quizdata.name} Qiuz</h2>
-            </div>
-            {/* UI for Quiz */}
-            <div className="quiz-box mt-5">
-                <div className="img-side">
-                <img className='w-60 mx-auto rounded-full shadow-lg' src={quizdata.logo} alt={quizdata.name} />
-                </div>
-                <div className="question">
-                {
-                        
-                }
-                </div>
-            </div>
+  const quizdata = useLoaderData().data;
+  const questionall = quizdata.questions;
+  console.log(questionall);
+  console.log(quizdata);
+  return (
+    <div>
+      <section className='bg-gray-800 text-gray-100'>
+        <div className='container flex flex-col justify-center p-4 mx-auto md:p-8'>
+          <p className='p-2 text-sm font-medium tracking-wider text-center uppercase'>
+            Topic:{quizdata.name}
+          </p>
+          {questionall.map((question) => (
+            <Question questionall={question}></Question>
+          ))}
         </div>
-    );
+      </section>
+    </div>
+  );
 };
 
 export default Quiz;
