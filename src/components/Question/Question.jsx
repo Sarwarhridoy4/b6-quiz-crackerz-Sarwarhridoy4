@@ -1,10 +1,13 @@
 import React from 'react';
 
 const Question = ({ questionall }) => {
-    // console.log(questionall);
+    console.log(questionall);
     const { id,correctAnswer, options, question } = questionall;
     return (
-        <div>
+		<div>
+			{
+				
+			}
             <h2 className="mb-12 text-2xl font-bold leading-none text-center sm:text-2xl">{question}</h2>
 		<div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
 			<div className='flex items-center'>

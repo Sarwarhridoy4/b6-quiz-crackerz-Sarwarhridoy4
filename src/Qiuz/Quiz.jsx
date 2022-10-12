@@ -5,7 +5,7 @@ import Question from "../components/Question/Question";
 const Quiz = () => {
   const quizdata = useLoaderData().data;
   const questionall = quizdata.questions;
-  // console.log(questionall);
+  console.log(questionall);
   // console.log(quizdata);
   return (
     <div>
@@ -15,7 +15,7 @@ const Quiz = () => {
             Topic:{quizdata.name}
           </p>
           {questionall.map((question) => (
-            <Question questionall={question}></Question>
+            <Question key={question.id} questionall={question}></Question>
           ))}
         </div>
       </section>
