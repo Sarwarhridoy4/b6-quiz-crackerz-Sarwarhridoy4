@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Question = ({ questionall }) => {
-    console.log(questionall);
+    // console.log(questionall);
     const { id,correctAnswer, options, question } = questionall;
     return (
         <div>
