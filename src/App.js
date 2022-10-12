@@ -31,6 +31,26 @@ function App() {
           element: <Topic></Topic>,
         },
         {
+          path: "item/:itemid",
+          loader: async ({ params }) => {
+            // console.log(params);
+            return fetch(
+              `https://openapi.programming-hero.com/api/quiz/${params.itemid}`
+            );
+          },
+          element: <Quiz></Quiz>,
+        },
+        {
+          path: "/topic/item/:itemid",
+          loader: async ({ params }) => {
+            // console.log(params);
+            return fetch(
+              `https://openapi.programming-hero.com/api/quiz/${params.itemid}`
+            );
+          },
+          element: <Quiz></Quiz>,
+        },
+        {
           path: "/statistics",
           element: <Statistics></Statistics>,
         },
@@ -44,16 +64,7 @@ function App() {
       path: "*",
       element: <NotFound></NotFound>,
     },
-    {
-      path: "item/:itemid",
-      loader: async ({ params }) => {
-        // console.log(params);
-        return fetch(
-          `https://openapi.programming-hero.com/api/quiz/${params.itemid}`
-        );
-      },
-      element: <Quiz></Quiz>,
-    },
+    
   ]);
   return (
     <div className='App'>

@@ -5,8 +5,8 @@ import Question from "../components/Question/Question";
 const Quiz = () => {
   const quizdata = useLoaderData().data;
   const questionall = quizdata.questions;
-  console.log(questionall);
-  console.log(quizdata);
+  // console.log(questionall);
+  // console.log(quizdata);
   return (
     <div>
       <section className='bg-gray-800 text-gray-100'>
