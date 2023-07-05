@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav className='text-white'>
+    <nav>
       <div className='navbar bg-amber-300'>
         <div className='flex-1'>
           <Link to='/' className='btn btn-ghost normal-case text-xl'>
