@@ -1,9 +1,8 @@
-import React from "react";
-import { Link, Link as NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav>
+    <nav className='text-white'>
       <div className='navbar bg-amber-300'>
         <div className='flex-1'>
           <Link to='/' className='btn btn-ghost normal-case text-xl'>
@@ -30,20 +29,20 @@ const Header = () => {
               </div>
             </label>
             <ul
-              tabIndex={0}
+              tabIndex={1}
               className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
             >
               <li>
-                <NavLink to='/home'>Home</NavLink>
+                <Link to='/home'>Home</Link>
               </li>
               <li>
-                <NavLink to='/topic'>Topics</NavLink>
+                <Link to='/topic'>Topics</Link>
               </li>
               <li>
-                <NavLink to='/statistics'>Statistics</NavLink>
+                <Link to='/statistics'>Statistics</Link>
               </li>
               <li>
-                <NavLink to='/blogs'>Blogs</NavLink>
+                <Link to='/blogs'>Blogs</Link>
               </li>
             </ul>
           </div>
