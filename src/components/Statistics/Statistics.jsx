@@ -1,11 +1,12 @@
 import { PureComponent } from "react";
-import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Sector, ResponsiveContainer, Cell } from "recharts";
 
+// Topic-specific colors
 const data = [
-  { name: "React", value: 8 },
-  { name: "JavaScript", value: 9 },
-  { name: "CSS", value: 8 },
-  { name: "GitHub", value: 11 },
+  { name: "React", value: 8, color: "#61DBFB" }, // React Blue
+  { name: "JavaScript", value: 9, color: "#F7DF1E" }, // JS Yellow
+  { name: "CSS", value: 8, color: "#264de4" }, // CSS Blue
+  { name: "GitHub", value: 11, color: "#333" }, // GitHub Dark
 ];
 
 const renderActiveShape = (props) => {
@@ -35,7 +36,7 @@ const renderActiveShape = (props) => {
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor='middle' fill={fill}>
+      <text x={cx} y={cy} dy={8} textAnchor='middle' fill={fill} fontSize={18}>
         {payload.name}
       </text>
       <Sector
@@ -67,7 +68,9 @@ const renderActiveShape = (props) => {
         y={ey}
         textAnchor={textAnchor}
         fill='#333'
-      >{`PV ${value}`}</text>
+      >
+        {`Score ${value}`}
+      </text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -75,49 +78,42 @@ const renderActiveShape = (props) => {
         textAnchor={textAnchor}
         fill='#999'
       >
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+        {`(${(percent * 100).toFixed(2)}%)`}
       </text>
     </g>
   );
 };
 
 export default class Example extends PureComponent {
-  static demoUrl =
-    "https://codesandbox.io/s/pie-chart-with-customized-active-shape-y93si";
-
   state = {
     activeIndex: 0,
   };
 
   onPieEnter = (_, index) => {
-    this.setState({
-      activeIndex: index,
-    });
+    this.setState({ activeIndex: index });
   };
 
   render() {
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "400px",
-          padding: "20px 30px 20px 5px",
-        }}
-      >
-        <ResponsiveContainer width='100%' height='100%'>
-          <PieChart width={400} height={400}>
+      <div className='flex justify-center items-center min-h-[75vh] p-6'>
+        <ResponsiveContainer width='100%' maxWidth={600} height={450}>
+          <PieChart>
             <Pie
               activeIndex={this.state.activeIndex}
               activeShape={renderActiveShape}
               data={data}
               cx='50%'
               cy='50%'
-              innerRadius={60}
-              outerRadius={80}
-              fill='#8884d8'
+              innerRadius={85}
+              outerRadius={110}
               dataKey='value'
               onMouseEnter={this.onPieEnter}
-            />
+              isAnimationActive={true}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Pie>
           </PieChart>
         </ResponsiveContainer>
       </div>

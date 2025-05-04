@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import "./App.css";
 import NotFound from "./components/404/NotFound";
 import Blogs from "./components/Blogs/Blogs";
@@ -43,7 +43,6 @@ function App() {
         {
           path: "/topic/item/:itemid",
           loader: async ({ params }) => {
-            // console.log(params);
             return fetch(
               `https://openapi.programming-hero.com/api/quiz/${params.itemid}`
             );
@@ -64,7 +63,6 @@ function App() {
       path: "*",
       element: <NotFound></NotFound>,
     },
-    
   ]);
   return (
     <div className='App'>

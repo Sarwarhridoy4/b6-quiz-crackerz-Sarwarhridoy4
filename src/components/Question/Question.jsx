@@ -1,42 +1,45 @@
-import React from 'react';
+import PropTypes from "prop-types";
 
 const Question = ({ questionall }) => {
-    console.log(questionall);
-    const { id,correctAnswer, options, question } = questionall;
-    return (
-		<div>
-			{
-				
-			}
-            <h2 className="mb-12 text-2xl font-bold leading-none text-center sm:text-2xl">{question}</h2>
-		<div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
-			<div className='flex items-center'>
-				<h3 className="font-semibold">
-					<input type="radio" name={id} className={`radio ${correctAnswer ? "radio-primary" : "radio checked:bg-red-500"}`}/>
-				</h3>
-                <p className="mt-1 text-gray-400">{options[0]}</p>
-			</div>
-			<div className='flex items-center'>
-				<h3 className="font-semibold">
-					<input type="radio" name={id} className={`radio ${correctAnswer ? "radio-primary" : "radio checked:bg-red-500"}`}/>
-				</h3>
-				<p className="mt-1 text-gray-400">{options[1]}</p>
-			</div>
-			<div className='flex items-center'>
-				<h3 className="font-semibold">
-					<input type="radio" name={id} className={`radio ${correctAnswer ? "radio-primary" : "radio checked:bg-red-500"}`}/>
-				</h3>
-				<p className="mt-1 text-gray-400">{options[2]} </p>
-			</div>
-			<div className='flex items-center'>
-				<h3 className="font-semibold">
-					<input type="radio" name={id} className={`radio ${correctAnswer ? "radio-primary" : "radio checked:bg-red-500"}`}/>
-				</h3>
-				<p className="mt-1 text-gray-400">{options[3]}</p>
-			</div>
-		</div>
-        </div>
-    );
+  const { id, correctAnswer, options, question } = questionall;
+
+  return (
+    <div className='px-4 py-6 sm:px-6 lg:px-12 xl:px-24'>
+      {/* Render HTML inside the question safely */}
+      <h2
+        className='mb-8 text-2xl font-bold text-center sm:text-3xl text-amber-400'
+        dangerouslySetInnerHTML={{ __html: question }}
+      />
+
+      <div className='grid gap-6 sm:grid-cols-2'>
+        {options.map((option, index) => (
+          <label
+            key={index}
+            className='flex items-start gap-3 p-4 border rounded-lg shadow-sm cursor-pointer hover:bg-gray-50 transition'
+          >
+            <input
+              type='radio'
+              name={id}
+              value={option}
+              className={`mt-1 radio ${
+                correctAnswer ? "radio-primary" : "radio checked:bg-red-500"
+              }`}
+            />
+            <p className='text-amber-600'>{option}</p>
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+Question.propTypes = {
+  questionall: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    correctAnswer: PropTypes.bool.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    question: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Question;
