@@ -23,5 +23,4 @@ firebase
 *.njsproj
 *.sln
 *.sw?
-firebase.json
 .firebaserc
