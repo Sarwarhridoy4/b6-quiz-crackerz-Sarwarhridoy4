@@ -22,7 +22,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
-    "daisyui": "^5.5.11",
+    "daisyui": "^5.5.13",
     "eslint": "^9.26.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
