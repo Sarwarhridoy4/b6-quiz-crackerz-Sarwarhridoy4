@@ -1,32 +1,45 @@
-# Getting Started with Quizily
+# Quizily
 
-### Live
+Quizily is a responsive quiz web app that helps learners practice, track progress, and visualize performance with clean, interactive UI.
 
-- [https://quiz-easily.web.app](https://quiz-easily.web.app).
+## Live Demo
 
-~~This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).~~  
-This project was bootstrapped with [Vite](https://vitejs.dev/).
+- `https://quiz-easily.web.app`
 
-## Other Dependencies
+## Preview
 
-✅ [Tailwind-CSS](https://tailwindcss.com/)
-✅ [DaisyUi](https://daisyui.com/)
-✅ [react-router](https://reactrouter.com/en/main)
-✅ [Rechart](https://recharts.org/en-US/)
-✅ [Rechart](https://recharts.org/en-US/)
-✅ [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic)
-✅ [Kitwind-khometa-ui](https://kitwind.io/products/kometa)
+![Quizily app screenshot](src/assets/quizily-screenshot.png)
 
-# Highlighted Feature.
+## Tech Stack
 
-❤️ Easy And User-Friendly.
-❤️ Responsive with every device.
-❤️ Less loading time.
-❤️ Beginner friendly.
-❤️ Interactive UI.
-❤️ Learn web development easily.
-❤️ Keep track of your progress.
-❤️ Show statistical data.
-❤️ Easy to analyze performance.
-❤️ Daily quiz based activity.
-❤️ Easy navigation.
+- `React`
+- `Vite`
+- `Tailwind CSS`
+- `DaisyUI`
+- `React Router`
+- `Recharts`
+- `d3-scale-chromatic`
+- `Kitwind Kometa UI`
+
+## Features
+
+- Clean, user-friendly quiz experience
+- Responsive layout across devices
+- Fast load times with Vite build pipeline
+- Progress tracking and performance insights
+- Visual statistics with charts
+- Daily quiz activity support
+- Simple navigation and accessible UI
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+## Scripts
+
+- `npm run dev` - Start local development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
