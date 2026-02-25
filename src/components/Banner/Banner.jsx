@@ -1,3 +1,11 @@
+import {
+  buildOptimizedUrl,
+  buildResponsiveSrcSet,
+} from "../../utils/imageHelpers";
+
+const HERO_IMAGE =
+  "https://cdn.pixabay.com/photo/2018/03/21/05/29/question-mark-3245622_960_720.jpg";
+
 const Banner = () => {
   return (
     <section className='relative overflow-hidden'>
@@ -10,8 +18,15 @@ const Banner = () => {
           <div className='relative fade-up fade-up-delay-2'>
             <div className='absolute -inset-4 rounded-3xl bg-primary/10 blur-xl' />
             <img
-              src='https://cdn.pixabay.com/photo/2018/03/21/05/29/question-mark-3245622_960_720.jpg'
+              src={buildOptimizedUrl(HERO_IMAGE, 960)}
+              srcSet={buildResponsiveSrcSet(HERO_IMAGE, [480, 720, 960, 1440])}
+              sizes='(min-width: 1024px) 480px, 90vw'
               alt='Quiz Illustration'
+              width='960'
+              height='720'
+              loading='eager'
+              decoding='async'
+              fetchpriority='high'
               className='relative w-full max-w-md rounded-3xl shadow-2xl ring-1 ring-base-300/60'
             />
           </div>

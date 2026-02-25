@@ -13,6 +13,10 @@ const NotFound = () => {
             className='relative w-60 sm:w-72 md:w-80 lg:w-96 drop-shadow-xl'
             src='https://cdn.pixabay.com/photo/2016/04/24/13/24/error-1349562_960_720.png'
             alt='Page Not Found'
+            width='960'
+            height='720'
+            loading='lazy'
+            decoding='async'
           />
         </div>
 
