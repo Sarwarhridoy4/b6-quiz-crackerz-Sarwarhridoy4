@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 const Item = ({ item }) => {
   const { id, name, logo, total } = item;
+  const totalQuestions = Math.min(Number(total) || 0, 10);
+
   return (
     <div className='space-y-4'>
       <figure className='flex items-center justify-center rounded-2xl bg-base-200/60 p-5'>
@@ -15,7 +17,7 @@ const Item = ({ item }) => {
       <div className='space-y-3'>
         <h2 className='text-lg font-semibold text-base-content'>{name}</h2>
         <p className='text-3xl font-bold text-amber-400'>
-          {total}
+          {totalQuestions}
           <span className='ml-2 text-xs font-medium uppercase tracking-widest text-base-content/60'>
             Questions
           </span>

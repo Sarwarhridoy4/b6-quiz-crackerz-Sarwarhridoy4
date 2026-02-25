@@ -9,6 +9,7 @@ const Home = lazy(() => import("./components/Home/Home"));
 const Statistics = lazy(() => import("./components/Statistics/Statistics"));
 const Topic = lazy(() => import("./components/Topic/Topic"));
 const Quiz = lazy(() => import("./Qiuz/Quiz"));
+const ReportCard = lazy(() => import("./components/ReportCard/ReportCard"));
 
 const withSuspense = (Component) => (
   <Suspense
@@ -65,11 +66,16 @@ function App() {
         },
         {
           path: "/statistics",
+          loader: () => fetch("https://openapi.programming-hero.com/api/quiz"),
           element: withSuspense(Statistics),
         },
         {
           path: "/blogs",
           element: withSuspense(Blogs),
+        },
+        {
+          path: "/report-card",
+          element: withSuspense(ReportCard),
         },
       ],
     },

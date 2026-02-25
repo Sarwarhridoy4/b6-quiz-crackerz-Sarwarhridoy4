@@ -1,9 +1,58 @@
-import { useLoaderData } from "react-router";
+import { useMemo, useState } from "react";
+import { useLoaderData, useNavigate } from "react-router";
 import Question from "../components/Question/Question";
 
 const Quiz = () => {
+  const navigate = useNavigate();
   const quizdata = useLoaderData().data;
-  const questionall = quizdata.questions;
+  const questionall = quizdata.questions.slice(0, 10);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+
+  const answeredCount = useMemo(
+    () => Object.keys(selectedAnswers).length,
+    [selectedAnswers]
+  );
+
+  const handleSelectAnswer = (questionId, answer) => {
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [questionId]: answer,
+    }));
+  };
+
+  const handleSubmitQuiz = () => {
+    const details = questionall.map((question) => {
+      const selected = selectedAnswers[question.id] || null;
+      const isCorrect = selected === question.correctAnswer;
+
+      return {
+        id: question.id,
+        question: question.question,
+        selectedAnswer: selected,
+        correctAnswer: question.correctAnswer,
+        isCorrect,
+      };
+    });
+
+    const correctCount = details.filter((item) => item.isCorrect).length;
+    const incorrectCount = details.filter(
+      (item) => item.selectedAnswer && !item.isCorrect
+    ).length;
+    const unansweredCount = details.filter(
+      (item) => !item.selectedAnswer
+    ).length;
+
+    navigate("/report-card", {
+      state: {
+        topicName: quizdata.name,
+        totalQuestions: questionall.length,
+        correctCount,
+        incorrectCount,
+        unansweredCount,
+        details,
+      },
+    });
+  };
 
   return (
     <div className='relative overflow-hidden bg-base-200/60 page-aurora min-h-screen'>
@@ -25,7 +74,7 @@ const Quiz = () => {
                 {questionall.length} Questions
               </span>
               <span className='badge badge-outline badge-lg'>
-                Timed practice
+                {answeredCount} Answered
               </span>
             </div>
           </header>
@@ -39,9 +88,22 @@ const Quiz = () => {
                 <div className='text-xs font-semibold uppercase tracking-[0.3em] text-base-content/50 mb-4'>
                   Question {index + 1}
                 </div>
-                <Question questionall={question}></Question>
+                <Question
+                  questionall={question}
+                  selectedAnswer={selectedAnswers[question.id] || ""}
+                  onSelectAnswer={handleSelectAnswer}
+                />
               </div>
             ))}
+          </div>
+
+          <div className='rounded-3xl bg-base-100/80 p-6 shadow-lg ring-1 ring-base-300/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'>
+            <p className='text-base-content/70'>
+              Review your answers, then generate your report card.
+            </p>
+            <button className='btn btn-primary' onClick={handleSubmitQuiz}>
+              Submit Quiz
+            </button>
           </div>
         </div>
       </section>

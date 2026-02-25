@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Question = ({ questionall }) => {
+const Question = ({ questionall, selectedAnswer, onSelectAnswer }) => {
   const { id, correctAnswer, options, question } = questionall;
 
   return (
@@ -21,14 +21,22 @@ const Question = ({ questionall }) => {
               type='radio'
               name={id}
               value={option}
-              className={`mt-1 radio ${
-                correctAnswer ? "radio-primary" : "radio checked:bg-red-500"
-              }`}
+              checked={selectedAnswer === option}
+              onChange={() => onSelectAnswer(id, option)}
+              className='mt-1 radio radio-primary'
             />
             <p className='text-base text-base-content/80'>{option}</p>
           </label>
         ))}
       </div>
+
+      {selectedAnswer ? (
+        <p className='text-sm text-base-content/60'>
+          Selected: <span className='font-medium'>{selectedAnswer}</span>
+        </p>
+      ) : (
+        <p className='text-sm text-warning'>No answer selected yet.</p>
+      )}
     </div>
   );
 };
@@ -36,10 +44,12 @@ const Question = ({ questionall }) => {
 Question.propTypes = {
   questionall: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    correctAnswer: PropTypes.bool.isRequired,
+    correctAnswer: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(PropTypes.string).isRequired,
     question: PropTypes.string.isRequired,
   }).isRequired,
+  selectedAnswer: PropTypes.string.isRequired,
+  onSelectAnswer: PropTypes.func.isRequired,
 };
 
 export default Question;
