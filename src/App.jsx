@@ -1,12 +1,26 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import { Suspense, lazy } from "react";
 import "./App.css";
-import NotFound from "./components/404/NotFound";
-import Blogs from "./components/Blogs/Blogs";
-import Home from "./components/Home/Home";
-import Statistics from "./components/Statistics/Statistics";
-import Topic from "./components/Topic/Topic";
 import Main from "./Layouts/Main";
-import Quiz from "./Qiuz/Quiz";
+
+const NotFound = lazy(() => import("./components/404/NotFound"));
+const Blogs = lazy(() => import("./components/Blogs/Blogs"));
+const Home = lazy(() => import("./components/Home/Home"));
+const Statistics = lazy(() => import("./components/Statistics/Statistics"));
+const Topic = lazy(() => import("./components/Topic/Topic"));
+const Quiz = lazy(() => import("./Qiuz/Quiz"));
+
+const withSuspense = (Component) => (
+  <Suspense
+    fallback={
+      <div className='min-h-[50vh] grid place-items-center'>
+        <span className='loading loading-spinner loading-lg text-primary' />
+      </div>
+    }
+  >
+    <Component />
+  </Suspense>
+);
 
 function App() {
   //creating router
@@ -18,17 +32,17 @@ function App() {
         {
           path: "/",
           loader: () => fetch("https://openapi.programming-hero.com/api/quiz"),
-          element: <Home></Home>,
+          element: withSuspense(Home),
         },
         {
           path: "/home",
           loader: () => fetch("https://openapi.programming-hero.com/api/quiz"),
-          element: <Home></Home>,
+          element: withSuspense(Home),
         },
         {
           path: "/topic",
           loader: () => fetch("https://openapi.programming-hero.com/api/quiz"),
-          element: <Topic></Topic>,
+          element: withSuspense(Topic),
         },
         {
           path: "item/:itemid",
@@ -38,7 +52,7 @@ function App() {
               `https://openapi.programming-hero.com/api/quiz/${params.itemid}`
             );
           },
-          element: <Quiz></Quiz>,
+          element: withSuspense(Quiz),
         },
         {
           path: "/topic/item/:itemid",
@@ -47,21 +61,21 @@ function App() {
               `https://openapi.programming-hero.com/api/quiz/${params.itemid}`
             );
           },
-          element: <Quiz></Quiz>,
+          element: withSuspense(Quiz),
         },
         {
           path: "/statistics",
-          element: <Statistics></Statistics>,
+          element: withSuspense(Statistics),
         },
         {
           path: "/blogs",
-          element: <Blogs></Blogs>,
+          element: withSuspense(Blogs),
         },
       ],
     },
     {
       path: "*",
-      element: <NotFound></NotFound>,
+      element: withSuspense(NotFound),
     },
   ]);
   return (
