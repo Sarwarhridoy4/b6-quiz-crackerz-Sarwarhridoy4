@@ -2,14 +2,45 @@ import { Link } from "react-router";
 
 const Header = () => {
   return (
-    <nav>
-      <div className='navbar bg-primary sticky top-0 z-50 shadow-lg'>
+    <nav className='sticky top-0 z-50'>
+      <div className='navbar bg-base-100/80 backdrop-blur-xl shadow-lg px-4 sm:px-6 lg:px-12'>
         <div className='flex-1'>
-          <Link to='/' className='btn btn-ghost normal-case text-xl'>
-            <span className='text-amber-600'>Q</span> uizzily
+          <Link to='/' className='flex items-center gap-2 text-xl font-semibold'>
+            <span className='inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/15 text-primary font-bold'>
+              Q
+            </span>
+            <span className='tracking-tight text-base-content'>Quizzily</span>
           </Link>
         </div>
-        <div className='flex-none'>
+
+        <div className='hidden md:flex items-center gap-2'>
+          <Link
+            to='/home'
+            className='btn btn-ghost rounded-full text-sm font-semibold'
+          >
+            Home
+          </Link>
+          <Link
+            to='/topic'
+            className='btn btn-ghost rounded-full text-sm font-semibold'
+          >
+            Topics
+          </Link>
+          <Link
+            to='/statistics'
+            className='btn btn-ghost rounded-full text-sm font-semibold'
+          >
+            Statistics
+          </Link>
+          <Link
+            to='/blogs'
+            className='btn btn-ghost rounded-full text-sm font-semibold'
+          >
+            Blogs
+          </Link>
+        </div>
+
+        <div className='flex-none md:hidden'>
           <div className='dropdown dropdown-end'>
             <label tabIndex={0} className='btn btn-ghost'>
               <div className='w-10'>
@@ -30,37 +61,25 @@ const Header = () => {
             </label>
             <ul
               tabIndex={1}
-              className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
+              className='menu dropdown-content mt-3 w-56 rounded-2xl bg-base-100/95 p-2 shadow-xl ring-1 ring-base-300/60'
             >
               <li>
-                <Link
-                  to='/home'
-                  className='hover:bg-primary px-4 py-2 rounded-lg transition duration-200'
-                >
+                <Link to='/home' className='rounded-lg'>
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  to='/topic'
-                  className='hover:bg-primary px-4 py-2 rounded-lg transition duration-200'
-                >
+                <Link to='/topic' className='rounded-lg'>
                   Topics
                 </Link>
               </li>
               <li>
-                <Link
-                  to='/statistics'
-                  className='hover:bg-primary px-4 py-2 rounded-lg transition duration-200'
-                >
+                <Link to='/statistics' className='rounded-lg'>
                   Statistics
                 </Link>
               </li>
               <li>
-                <Link
-                  to='/blogs'
-                  className='hover:bg-primary px-4 py-2 rounded-lg transition duration-200'
-                >
+                <Link to='/blogs' className='rounded-lg'>
                   Blogs
                 </Link>
               </li>

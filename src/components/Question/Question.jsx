@@ -4,18 +4,18 @@ const Question = ({ questionall }) => {
   const { id, correctAnswer, options, question } = questionall;
 
   return (
-    <div className='px-4 py-6 sm:px-6 lg:px-12 xl:px-24'>
+    <div className='space-y-6'>
       {/* Render HTML inside the question safely */}
       <h2
-        className='mb-8 text-2xl font-bold text-center sm:text-3xl text-amber-400'
+        className='text-xl sm:text-2xl font-bold text-base-content'
         dangerouslySetInnerHTML={{ __html: question }}
       />
 
-      <div className='grid gap-6 sm:grid-cols-2'>
+      <div className='grid gap-4 sm:grid-cols-2'>
         {options.map((option, index) => (
           <label
             key={index}
-            className='flex items-start gap-3 p-4 border rounded-lg shadow-sm cursor-pointer hover:bg-gray-50 transition'
+            className='flex items-start gap-3 rounded-2xl border border-base-300/60 bg-base-100/70 p-4 shadow-sm cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md'
           >
             <input
               type='radio'
@@ -25,7 +25,7 @@ const Question = ({ questionall }) => {
                 correctAnswer ? "radio-primary" : "radio checked:bg-red-500"
               }`}
             />
-            <p className='text-amber-600'>{option}</p>
+            <p className='text-base text-base-content/80'>{option}</p>
           </label>
         ))}
       </div>

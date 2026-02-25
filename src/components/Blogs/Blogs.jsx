@@ -19,26 +19,48 @@ const Blogs = () => {
   ];
 
   return (
-    <div className='w-full min-h-screen py-10 px-4'>
-      <div className='max-w-3xl mx-auto space-y-8'>
-        {blogItems.map((item, index) => (
-          <div
-            key={index}
-            className='shadow-md rounded-2xl p-6 md:p-8 transition hover:shadow-lg'
-          >
-            <h2 className='text-2xl md:text-3xl font-bold text-amber-100 mb-2'>
-              {item.question}
-            </h2>
-            {item.note && (
-              <h4 className='text-md md:text-lg italic text-amber-300 mb-4'>
-                {item.note}
-              </h4>
-            )}
-            <p className='text-amber-200 text-base md:text-lg leading-relaxed'>
-              {item.answer}
-            </p>
-          </div>
-        ))}
+    <div className='relative overflow-hidden w-full min-h-screen bg-base-200/60 page-aurora py-12 px-4 sm:px-6 lg:px-12'>
+      <div className='max-w-5xl mx-auto space-y-10'>
+        <header className='text-center space-y-4'>
+          <p className='text-sm font-semibold uppercase tracking-[0.3em] text-base-content/60'>
+            Developer Notes
+          </p>
+          <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-base-content'>
+            Blog & Knowledge Base
+          </h1>
+          <p className='text-base text-base-content/70 max-w-2xl mx-auto'>
+            Quick explanations and practical answers to the questions that show
+            up in every interview or daily build.
+          </p>
+        </header>
+
+        <div className='grid gap-6'>
+          {blogItems.map((item, index) => (
+            <article
+              key={index}
+              className='card-sheen rounded-3xl p-6 md:p-8 shadow-xl ring-1 ring-base-300/50 transition hover:-translate-y-1 hover:shadow-2xl'
+            >
+              <div className='flex flex-col gap-4 md:flex-row md:items-start md:justify-between'>
+                <div className='space-y-3'>
+                  <h2 className='text-2xl md:text-3xl font-bold text-base-content'>
+                    {item.question}
+                  </h2>
+                  {item.note && (
+                    <p className='text-sm md:text-base font-medium text-primary/80'>
+                      {item.note}
+                    </p>
+                  )}
+                </div>
+                <span className='inline-flex items-center rounded-full bg-base-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-base-content/60 ring-1 ring-base-300/60'>
+                  Guide
+                </span>
+              </div>
+              <p className='mt-4 text-base md:text-lg leading-relaxed text-base-content/80'>
+                {item.answer}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   );
