@@ -14,7 +14,7 @@
     "d3-scale-chromatic": "^3.1.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router": "^7.13.1",
+    "react-router": "^7.13.2",
     "recharts": "^3.8.0",
     "tailwindcss": "^4.2.2"
   },
