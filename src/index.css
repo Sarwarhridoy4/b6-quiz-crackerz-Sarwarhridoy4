@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
-@plugin "daisyui" {
-    themes: synthwave --default, dark --prefersdark;
-}
+/* DaisyUI plugin */
+@plugin "daisyui";
 
 @layer base {
   :root {

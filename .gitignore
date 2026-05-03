@@ -24,4 +24,5 @@ firebase
 *.njsproj
 *.sln
 *.sw?
-.firebaserc
+*.agents
+skills-lock.json
